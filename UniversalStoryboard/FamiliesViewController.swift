@@ -44,7 +44,7 @@ class FamiliesViewController: UITableViewController {
                 let object = rows![indexPath.row]
                 var objectValues: [String] = objects[object]!
                 
-                let controller = segue.destinationViewController as BirdsViewController
+                let controller = segue.destinationViewController as! BirdsViewController
                 controller.objects = objectValues as Array
             }
         }
@@ -61,7 +61,7 @@ class FamiliesViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("FamiliesCell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("FamiliesCell", forIndexPath: indexPath) as! UITableViewCell
         let object = rows[indexPath.row] as String
         cell.textLabel!.text = object
         return cell

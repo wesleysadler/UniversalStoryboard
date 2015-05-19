@@ -42,7 +42,7 @@ class BackyardBirdsViewController : UITableViewController {
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow() {
                 let object = objects[indexPath.row]
-                let controller = (segue.destinationViewController as UINavigationController).topViewController as DetailViewController
+                let controller = (segue.destinationViewController as! UINavigationController).topViewController as! DetailViewController
                 controller.detailItem = object
             }
         }
@@ -59,7 +59,7 @@ class BackyardBirdsViewController : UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("BackyardBirdsCell", forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("BackyardBirdsCell", forIndexPath: indexPath) as! UITableViewCell
         let object = objects[indexPath.row] as String
         cell.textLabel!.text = object
         return cell

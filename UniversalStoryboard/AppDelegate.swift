@@ -20,23 +20,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.        
         
-        let splitViewController = self.window!.rootViewController as UISplitViewController
+        let splitViewController = self.window!.rootViewController as! UISplitViewController
         splitViewController.delegate = self
         splitViewController.preferredDisplayMode = UISplitViewControllerDisplayMode.AllVisible
         
         // get tab bar contoller so can set variables in other view controller of tab bar
-        let tabBarController = splitViewController.viewControllers[0] as UITabBarController
+        let tabBarController = splitViewController.viewControllers[0] as! UITabBarController
         tabBarController.delegate = self
         let tabBarControllers = tabBarController.viewControllers
         // set families view controller variables
         if let familiesNavigationController = tabBarControllers?[0] as? UINavigationController {
-            let controller = familiesNavigationController.topViewController as FamiliesViewController
+            let controller = familiesNavigationController.topViewController as! FamiliesViewController
             controller.objects = self.objects
             controller.rows = [String](self.objects.keys)
         }
         // set backyard birds view controller variables
         if let birdsNavigationController = tabBarControllers?[1] as? UINavigationController {
-            let controller = birdsNavigationController.topViewController as BackyardBirdsViewController
+            let controller = birdsNavigationController.topViewController as! BackyardBirdsViewController
             controller.objects = backyardBirds
         }
 
@@ -81,8 +81,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
     
     func splitViewController(splitViewController: UISplitViewController, showDetailViewController vc: UIViewController, sender: AnyObject?) -> Bool {
         if splitViewController.collapsed {
-            let tabBarViewController = splitViewController.viewControllers[0] as UITabBarController
-            let masterViewController = tabBarViewController.selectedViewController as UINavigationController
+            let tabBarViewController = splitViewController.viewControllers[0] as! UITabBarController
+            let masterViewController = tabBarViewController.selectedViewController as! UINavigationController
             masterViewController.showViewController(vc, sender: sender)
             
             return true
